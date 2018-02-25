@@ -26,17 +26,118 @@ namespace BinaryTree
             throw new NotImplementedException("Alex Implementar");
         }
 
-        public T Delete(T value)
+        public void Delete(T value)
         {
-            throw new NotImplementedException();
+            Delete(value, cabeza);
         }
 
-        public T Delete(T value, Nodo<T> node)
+        public void Delete(T value, Nodo<T> node)
         {
-            throw new NotImplementedException();
+            Nodo<T> Min;
+            if (value == null)
+            {
+                throw new NullReferenceException();
+            }
+
+            else if (value.CompareTo(node.Value) == -1)
+            {
+                Delete(value, node.Left);
+            }//look in the left
+
+            else if (value.CompareTo(node.Value) > 0)
+            {
+                Delete(value, node.Right);
+            }//look in the right
+
+            else
+            { //found node to delete
+
+                if (node.Left != null && node.Right != null) //two children
+                {
+                    Min = FindMin(node.Right);
+                    node.Value = Min.Value;
+                    Delete(node.Value, node.Right);
+
+                }
+
+                else
+                { //one or zero child
+
+                    if (node.Left == null)//The root node is to be deleted
+                    {
+                        if (node.Parent == null)
+                        {
+                            cabeza = node.Right;
+                        }
+                        else
+                        {
+                            if (node.Right != null)
+                            {
+                                node.Right.Parent = node.Parent;
+                            }
+
+                            if (node == node.Parent.Left)
+                            {
+                                node.Parent.Left = node.Right;
+                            }
+
+                            else
+                            {
+                                node.Parent.Right = node.Right;
+                            }
+                        }
+
+                    }
+                    else if (node.Right == null)
+                    {
+                        if (node.Parent == null)
+                        {
+                            cabeza = node.Left;
+                        }
+                        else
+                        {
+
+                            node.Left.Parent = node.Parent;
+
+                            if (node == node.Parent.Left)
+                            {
+                                node.Parent.Left = node.Left;
+                            }
+                            else
+                            {
+                                node.Parent.Right = node.Left;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        public Nodo<T> FindMin(Nodo<T> root)
+        {
+            if (root == null)
+            {
+                return null;
+            }
+
+            else if (root.Left == null)
+            {
+                return root;
+            }
+
+            else
+            {
+                return FindMin(root.Left);
+            }
         }
 
-       
+        private bool isLeaf(Nodo<T> node)
+        {
+            if (node.Left == null && node.Right == null)
+            {
+                return true;
+            }
+            return false;
+        }
 
         public void InOrder()
         {
@@ -54,6 +155,11 @@ namespace BinaryTree
             if (cabeza == null)
             {
                 cabeza.Value = value;
+            }
+            if (node == null)
+            {
+                node = new Nodo<T>();
+                node.Value = value;
             }
             else
             {
