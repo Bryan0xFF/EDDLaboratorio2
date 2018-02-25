@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace EDD_LAB02_1252016_1053016.Controllers
+namespace LAB02_1252016_1053016.Controllers
 {
     public class HomeController : Controller
     {

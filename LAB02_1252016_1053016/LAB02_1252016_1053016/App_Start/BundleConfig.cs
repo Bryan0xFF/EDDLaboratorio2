@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.Web.Optimization;
 
-namespace EDD_LAB02_1252016_1053016
+namespace LAB02_1252016_1053016
 {
     public class BundleConfig
     {

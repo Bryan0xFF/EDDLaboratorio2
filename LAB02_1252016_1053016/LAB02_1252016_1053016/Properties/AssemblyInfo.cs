@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("EDD_LAB02_1252016_1053016")]
+[assembly: AssemblyTitle("LAB02_1252016_1053016")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("EDD_LAB02_1252016_1053016")]
+[assembly: AssemblyProduct("LAB02_1252016_1053016")]
 [assembly: AssemblyCopyright("Copyright ©  2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("6bcb9ff9-35d6-4fd8-8642-74690e91ec34")]
+[assembly: Guid("9a433256-c0fd-44ee-a5a5-c71293648598")]
 
 // Version information for an assembly consists of the following four values:
 //

@@ -6,7 +6,7 @@ using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 
-namespace EDD_LAB02_1252016_1053016
+namespace LAB02_1252016_1053016
 {
     public class MvcApplication : System.Web.HttpApplication
     {
