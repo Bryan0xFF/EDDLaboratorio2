@@ -177,7 +177,6 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Paises\Menu.cshtml" />
     <Content Include="Views\Paises\Index.cshtml" />
     <Content Include="Views\Paises\Cadenas.cshtml" />
     <Content Include="Views\Paises\Enteros.cshtml" />

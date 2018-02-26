@@ -1,17 +1,10 @@
-﻿
-@{
-    Layout = null;
+﻿@{
+    ViewBag.Title = "Menu";
 }
 
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Cadenas</title>
-</head>
-<body>
-    <div> 
-    </div>
-</body>
-</html>
+<p><h2>Menu:</h2></p>
+<p>Indique la acción que desea realizar:</p>
+<p>@Html.ActionLink("Leer archivo .Json para crear cadenas", "LecturaArchivo", FormMethod.Get)</p>
+<p>@Html.ActionLink("Crear un cadenas", "Create")</p>
+<p>@Html.ActionLink("Editar un cadenas", "EditRedirectioner")</p>
+<p>@Html.ActionLink("Eliminar un cadenas", "DeleteRedirectioner")</p>

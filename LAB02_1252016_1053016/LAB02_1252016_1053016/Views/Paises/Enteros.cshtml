@@ -1,17 +1,11 @@
 ﻿
 @{
-    Layout = null;
+    ViewBag.Title = "Menu";
 }
 
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Enteros</title>
-</head>
-<body>
-    <div> 
-    </div>
-</body>
-</html>
+<p><h2>Menu:</h2></p>
+<p>Indique la acción que desea realizar:</p>
+<p>@Html.ActionLink("Leer archivo .Json para crear enteros", "LecturaArchivo", FormMethod.Get)</p>
+<p>@Html.ActionLink("Crear un enteros", "Create")</p>
+<p>@Html.ActionLink("Editar un enteros", "EditRedirectioner")</p>
+<p>@Html.ActionLink("Eliminar un enteros", "DeleteRedirectioner")</p>

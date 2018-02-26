@@ -1,12 +1,11 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "Indique el tipo de dato a utilizar en los nodos del árbol:";
 }
 
 <h2>Presione para utilizar cadenas: </h2>
 
 <p>
-    @using (Html.BeginForm("ListaGenerica", "Jugadores"))
+    @using (Html.BeginForm("Cadenas", "Paises"))
     {
         <input type="submit" value="Cadenas" />
     }
@@ -15,7 +14,7 @@
 <h2>Presione para utilizar enteros: </h2>
 
 <p>
-    @using (Html.BeginForm("ListaGenerica", "Jugadores"))
+    @using (Html.BeginForm("Enteros", "Paises"))
     {
         <input type="submit" value="Enteros" />
     }
@@ -23,8 +22,9 @@
 
 <h2>Presione para utilizar Paises:</h2>
 <p>
-    @using (Html.BeginForm("ListaNET", "Jugadores"))
+    @using (Html.BeginForm("Paises", "Paises"))
     {
         <input type="submit" value="Paises" />
     }
 </p>
+

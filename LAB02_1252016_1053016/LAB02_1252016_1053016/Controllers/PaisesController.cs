@@ -38,7 +38,7 @@ namespace LAB02_1252016_1053016.Controllers
             opciones[2] = false;
             Session["Opcion"] = opciones;
 
-            return RedirectToAction("Menu");
+            return View("Cadenas");
         }
 
         public ActionResult Enteros()
@@ -48,7 +48,7 @@ namespace LAB02_1252016_1053016.Controllers
             opciones[2] = false;
             Session["Opcion"] = opciones;
 
-            return RedirectToAction("Menu");
+            return View("Enteros");
         }
 
         public ActionResult Paises()
@@ -58,10 +58,8 @@ namespace LAB02_1252016_1053016.Controllers
             opciones[2] = true;
             Session["Opcion"] = opciones;
 
-            return RedirectToAction("Menu");
+            return View("Paises");
         }
-
-        
 
         [HttpGet]
         public ActionResult LecturaArchivo()
@@ -70,6 +68,13 @@ namespace LAB02_1252016_1053016.Controllers
             return View();
         }
 
-       
+        private bool isValidContentType(string contentType)
+        {
+            return contentType.Equals("application/json");
+        }
+
+
+
+
     }
 }
