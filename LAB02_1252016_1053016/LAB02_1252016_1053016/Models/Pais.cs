@@ -5,9 +5,14 @@ using System.Web;
 
 namespace LAB02_1252016_1053016.Models
 {
-    public class Pais
+    public class Pais: IComparable<Pais>
     {
         public string NombrePais { get; set; }
         public string grupo  { get; set; }
-}
+
+        public int CompareTo(Pais other)
+        {
+            return this.CompareTo(other);
+        }
+    }
 }

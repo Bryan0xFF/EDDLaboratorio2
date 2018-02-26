@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BinTree
 {
-    class BinaryTree<T> : ArbolBinario<T>,IEnumerable<T> where T : IComparable<T>
+    public class BinaryTree<T> : ArbolBinario<T>,IEnumerable<T> where T : IComparable<T>
     {
         private Nodo<T> cabeza;
 
@@ -42,12 +42,12 @@ namespace BinTree
             else if (value.CompareTo(node.Value) == -1)
             {
                 Delete(value, node.Left);
-            }//look in the left
+            } //look in the left
 
             else if (value.CompareTo(node.Value) > 0)
             {
                 Delete(value, node.Right);
-            }//look in the right
+            } //look in the right
 
             else
             { //found node to delete
@@ -139,7 +139,7 @@ namespace BinTree
             return false;
         }
 
-        public void InOrder()
+        public List<T> InOrder()
         {
             throw new NotImplementedException();
         }
@@ -185,12 +185,12 @@ namespace BinTree
             throw new NotImplementedException();
         }
 
-        public void PostOrder()
+        public List<T> PostOrder()
         {
             throw new NotImplementedException();
         }
 
-        public void PreOrder()
+        public List<T> PreOrder()
         {
             throw new NotImplementedException();
         }

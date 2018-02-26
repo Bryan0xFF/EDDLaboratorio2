@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BinTree
 {
-    class Nodo<T>
+    public class Nodo<T>
     {
         public Nodo<T> Left { get; set; }
         public Nodo<T> Right { get; set; }
