@@ -1,0 +1,18 @@
+﻿@model LAB02_1252016_1053016.Models.Pais
+
+@{
+    ViewBag.Title = "CargaManualPais";
+}
+
+<h2>Carga por país:</h2>
+
+@using (@Html.BeginForm("CargaManualPais", "Paises", FormMethod.Post))
+{
+    <p>Ingrese grupo:</p>
+    <p>@Html.TextBoxFor(Model => Model.grupo)</p>
+    @:&nbsp;
+    <p>Ingrese nombre de país:</p>
+    <p>@Html.TextBoxFor(Model => Model.NombrePais)</p>
+
+    <input type="Submit" name="Ingresar" value="Ingresar" />
+}

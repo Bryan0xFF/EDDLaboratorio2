@@ -62,6 +62,30 @@ namespace LAB02_1252016_1053016.Controllers
         }
 
         [HttpGet]
+        public ActionResult CargaManual()
+        {
+            opciones = (bool[])Session["Opcion"];
+
+            if (opciones[2] == true)
+            {
+                return View();
+            }
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult CargaManualPais(Pais pais)
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult CargaManualDatos(FormCollection formCollection)
+        {
+            return View();
+        }
+
+        [HttpGet]
         public ActionResult LecturaArchivo()
         {
             //aqui se abre una vista para poder subir el archivo
