@@ -14,6 +14,7 @@ namespace BinTree
         public BinaryTree()
         {
             cabeza = default(Nodo<T>);
+            cabeza = new Nodo<T>();
         }
 
         public bool Contains(T llave)
@@ -153,11 +154,12 @@ namespace BinTree
         public void Insert(T value, Nodo<T> node)
         {
             
-            if (cabeza == null)
+            if (cabeza.Value == null)
             {
                 cabeza.Value = value;
+                return;
             }
-            if (node == null)
+            else if (node == null)
             {
                 node = new Nodo<T>();
                 node.Value = value;
