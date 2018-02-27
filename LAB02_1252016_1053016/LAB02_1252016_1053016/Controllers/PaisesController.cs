@@ -76,6 +76,8 @@ namespace LAB02_1252016_1053016.Controllers
         [HttpPost]
         public ActionResult CargaManualPais(Pais pais)
         {
+            ABBPais = (BinaryTree<Pais>)Session["ABBPais"];
+            ABBPais.Insert(pais);
             return View();
         }
 
