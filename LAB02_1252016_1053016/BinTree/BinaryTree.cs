@@ -112,6 +112,7 @@ namespace BinTree
                 }
             }
         }
+
         public Nodo<T> FindMin(Nodo<T> root)
         {
             if (root == null)

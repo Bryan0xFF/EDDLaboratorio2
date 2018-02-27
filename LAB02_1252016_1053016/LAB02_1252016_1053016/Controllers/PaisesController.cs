@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using BinTree;
 using LAB02_1252016_1053016.Models;
 using System.IO;
+using Newtonsoft.Json; 
 
 namespace LAB02_1252016_1053016.Controllers
 {
@@ -25,8 +26,7 @@ namespace LAB02_1252016_1053016.Controllers
             Session["ABBPais"] = Session["ABBPais"] ?? ABBPais;
             Session["Opcion"] = Session["Opcion"] ?? opciones;
 
-            return View();
-            
+            return View();            
         }
 
 
@@ -68,12 +68,90 @@ namespace LAB02_1252016_1053016.Controllers
             return View();
         }
 
-        private bool isValidContentType(string contentType)
+        private bool isValidContentType(HttpPostedFileBase contentType)
         {
-            return contentType.Equals("application/json");
+            return contentType.FileName.EndsWith(".json");
         }
 
+        [HttpPost]
+        public ActionResult LecturaArchivo(HttpPostedFileBase File)
+        {          
+            if (File == null || File.ContentLength == 0)
+            {
+                ViewBag.Error = "El archivo seleccionado está vacío o no hay archivo seleccionado";
+                return View("Index");
+            }
+            else
+            {
+                if (!isValidContentType(File))
+                {
+                    ViewBag.Error = "Solo archivos Json son válidos para la entrada";
+                    return View("Index");
+                }
 
+                if (File.ContentLength > 0)
+                {
+                    var fileName = Path.GetFileName(File.FileName);
+                    var path = Path.Combine(Server.MapPath("~/Content/JsonFiles/" + fileName));
+                    if (System.IO.File.Exists(path))
+                        System.IO.File.Delete(path);
+                    File.SaveAs(path);
+                    using (StreamReader reader = new StreamReader(path))
+                    {
+                        //Seleccion de tipo de lista utilizar
+                        opciones = (bool[])Session["Opcion"];
+                        ABBCadena = (BinaryTree<string>)Session["ABBCadena"];
+                        ABBint = (BinaryTree<int>)Session["ABBint"];
+                        ABBPais = (BinaryTree<Pais>)Session["ABBPais"];                       
+
+                        //Realizar if donde dependiendo el booleano es la lista que se va a seleccionar    
+                        
+                        if (opciones[0] == true) // arbol de cadenas
+                        {
+                           string info =  reader.ReadToEnd();                             
+                           ABBCadena = JsonConvert.DeserializeObject<BinaryTree<string>>(info);                             
+                            Session["ABBCadena"] = ABBCadena;                           
+                        }
+                        else if (opciones[1] == true) //Arbol de enteros
+                        {
+                           
+                            Session["ABBint"] = ABBint;                           
+                        }                        
+                        else if (opciones[2] == true) //Arbol de paises
+                        {
+                            string info = reader.ReadToEnd();
+                            List<Pais> lista = JsonConvert.DeserializeObject<List<Pais>>(info);
+                            lista.ForEach(p =>
+                            {
+                                Pais newPais = new Pais()
+                                {
+                                    NombrePais = p.NombrePais,
+                                    Grupo = p.Grupo
+                                };
+                                ABBPais.Insert(newPais); 
+                            }); 
+                        }
+
+                        // no es ninguno de los 2 
+                        else
+                        {
+                            return RedirectToRoute("Paises/Index");
+                        }
+                    }
+                }              
+            }
+
+            if (opciones[0] == true)
+            {
+                ABBCadena = (BinaryTree<string>)Session["ABBCadena"];
+                return View("GenericSuccess");
+            }
+            else
+            {
+                ABBint = (BinaryTree<int>)Session["ABBint"];
+                return View("NETSuccess");
+            }
+        }
 
 
     }
