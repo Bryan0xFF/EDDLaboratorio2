@@ -16,6 +16,7 @@ namespace LAB02_1252016_1053016.Controllers
         BinaryTree<int> ABBint = new BinaryTree<int>();
         BinaryTree<Pais> ABBPais = new BinaryTree<Pais>();
         //1. cadena, 2. entero, 3. pais
+        //
         bool[] opciones = new bool[3];
 
         // GET: Paises
