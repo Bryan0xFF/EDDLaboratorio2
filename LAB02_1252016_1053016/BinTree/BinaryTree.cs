@@ -21,14 +21,12 @@ namespace BinTree
             throw new NotImplementedException();
         }
 
-        public string DegeneratedOrBalanced(Nodo<T> nodo)
+        public Nodo<T> DegeneratedOrBalanced(Nodo<T> nodo)
         {
             int L = Height(nodo.Left);
             int R = Height(nodo.Right);
             int diference = Math.Abs(L - R);
-            Nodo<T> desbalance = null;
-            string balanceado = "El árbol está balanceado";
-            string degenerado = "El árbol es degenerado";
+            Nodo<T> desbalance = null;           
 
             if (diference > 1)
             {
@@ -39,8 +37,9 @@ namespace BinTree
                         nodo = nodo.Left;
                         desbalance = nodo;                       
                     }
+                    return desbalance;
                 }
-                else if (L < R)
+                else if (R > L)
                 {
                     while (nodo.Right != null)
                     {
@@ -48,7 +47,7 @@ namespace BinTree
                         desbalance = nodo;
                        
                     }
-                    degenerado = degenerado + ", el nodo que no está balanceado es: " + desbalance.GetValue(); 
+                    return desbalance; 
                 }
                 else
                 {
@@ -57,12 +56,11 @@ namespace BinTree
                         nodo = nodo.Right;
                         desbalance = nodo;
                     }
-                }
-
-                return degenerado;
+                    return desbalance;
+                }              
             }
             else
-                return balanceado;       
+                return null;       
              
         }
 

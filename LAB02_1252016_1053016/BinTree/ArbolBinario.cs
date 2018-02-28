@@ -14,7 +14,7 @@ namespace BinTree
         void Delete(T value, Nodo<T> node);
         bool Contains(T llave);
         T Obtain(T llave);
-       string DegeneratedOrBalanced(Nodo<T> nodo);
+        Nodo<T> DegeneratedOrBalanced(Nodo<T> nodo);
         List<T> PreOrder();
         List<T> InOrder();
         List<T> PostOrder();

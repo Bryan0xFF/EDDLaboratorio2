@@ -167,7 +167,7 @@ namespace LAB02_1252016_1053016.Controllers
                                 };
                                 ABBPais.Insert(newPais);                                
                             }
-                            string res = ABBPais.DegeneratedOrBalanced(ABBPais.cabeza); 
+                            BinTree.Nodo<Pais> nodoDesbalanceado = ABBPais.DegeneratedOrBalanced(ABBPais.cabeza); 
                         }
 
                         // no es ninguno de los 2 
