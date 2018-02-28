@@ -17,6 +17,11 @@ namespace BinTree
         {            
             Value = default(T);
         }
+        
+        public T GetValue()
+        {
+            return Value; 
+        }
 
     }
 }

@@ -135,20 +135,29 @@ namespace LAB02_1252016_1053016.Controllers
                         
                         if (opciones[0] == true) // arbol de cadenas
                         {
-                           string info =  reader.ReadToEnd();                             
-                           ABBCadena = JsonConvert.DeserializeObject<BinaryTree<string>>(info);                             
+                           string info =  reader.ReadToEnd();    
+                           List<object> lista = JsonConvert.DeserializeObject<List<object>>(info);
+                            for (int i = 0; i < lista.Count; i++)
+                            {
+                                ABBCadena.Insert(lista.ElementAt(i).ToString());
+                            }
                             Session["ABBCadena"] = ABBCadena;                           
                         }
                         else if (opciones[1] == true) //Arbol de enteros
                         {
-                           
+                            string info = reader.ReadToEnd();
+                            List<object> lista = JsonConvert.DeserializeObject<List<object>>(info);
+                            for (int i = 0; i < lista.Count; i++)
+                            {                              
+                                ABBint.Insert(Convert.ToInt32(lista.ElementAt(i)));
+                            }
+
                             Session["ABBint"] = ABBint;                           
                         }                        
                         else if (opciones[2] == true) //Arbol de paises
                         {
                             string info = reader.ReadToEnd();
                             List<Pais> lista = JsonConvert.DeserializeObject<List<Pais>>(info);
-
                             for (int i = 0; i < lista.Count; i++)
                             {
                                 Pais newPais = new Pais()
@@ -156,8 +165,9 @@ namespace LAB02_1252016_1053016.Controllers
                                     NombrePais = lista.ElementAt(i).NombrePais,
                                     Grupo = lista.ElementAt(i).Grupo
                                 };
-                                ABBPais.Insert(newPais);
-                            }                        
+                                ABBPais.Insert(newPais);                                
+                            }
+                            string res = ABBPais.DegeneratedOrBalanced(ABBPais.cabeza); 
                         }
 
                         // no es ninguno de los 2 
@@ -181,6 +191,7 @@ namespace LAB02_1252016_1053016.Controllers
             }
         }
 
+      
 
     }
 }

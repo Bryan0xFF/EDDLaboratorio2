@@ -9,7 +9,7 @@ namespace BinTree
 {
     public class BinaryTree<T> : ArbolBinario<T>,IEnumerable<T> where T : IComparable<T>
     {
-        private Nodo<T> cabeza;
+        public Nodo<T> cabeza;
 
         public BinaryTree()
         {            
@@ -21,9 +21,49 @@ namespace BinTree
             throw new NotImplementedException();
         }
 
-        public List<T> DegeneratedOrBalanced(bool balance)
+        public string DegeneratedOrBalanced(Nodo<T> nodo)
         {
-            throw new NotImplementedException("Alex Implementar");
+            int L = Height(nodo.Left);
+            int R = Height(nodo.Right);
+            int diference = Math.Abs(L - R);
+            Nodo<T> desbalance = null;
+            string balanceado = "El árbol está balanceado";
+            string degenerado = "El árbol es degenerado";
+
+            if (diference > 1)
+            {
+                if (L > R)
+                {
+                    while (nodo.Left != null)
+                    {
+                        nodo = nodo.Left;
+                        desbalance = nodo;                       
+                    }
+                }
+                else if (L < R)
+                {
+                    while (nodo.Right != null)
+                    {
+                        nodo = nodo.Right;
+                        desbalance = nodo;
+                       
+                    }
+                    degenerado = degenerado + ", el nodo que no está balanceado es: " + desbalance.GetValue(); 
+                }
+                else
+                {
+                    while (nodo.Right != null)
+                    {
+                        nodo = nodo.Right;
+                        desbalance = nodo;
+                    }
+                }
+
+                return degenerado;
+            }
+            else
+                return balanceado;       
+             
         }
 
         public void Delete(T value)
@@ -198,6 +238,19 @@ namespace BinTree
         public List<T> PreOrder()
         {
             throw new NotImplementedException();
+        }
+
+        public int Height(Nodo<T> nodo)
+        {
+            int height = 0; 
+          if (nodo != null)
+            {
+                int L = Height(nodo.Left);
+                int R = Height(nodo.Right);
+                int Max = Math.Max(L, R);
+                height = Max + 1;
+            }
+            return height;
         }
 
         public IEnumerator<T> GetEnumerator()
