@@ -10,6 +10,9 @@ namespace BinTree
     public class BinaryTree<T> : ArbolBinario<T>,IEnumerable<T> where T : IComparable<T>
     {
         public Nodo<T> cabeza;
+        private static List<Nodo<T>> inOrden;
+        private static List<Nodo<T>> preOrden;
+        private static List<Nodo<T>> postOrden;
 
         public BinaryTree()
         {            
@@ -178,9 +181,9 @@ namespace BinTree
             return false;
         }
 
-        public List<T> InOrder()
+        public List<Nodo<T>> InOrder()
         {
-            throw new NotImplementedException();
+            return InOrder(cabeza);
         }
 
         public void Insert(T value)
@@ -228,19 +231,20 @@ namespace BinTree
             throw new NotImplementedException();
         }
 
-        public List<T> PostOrder()
+        public List<Nodo<T>> PostOrder()
         {
-            throw new NotImplementedException();
+            return PostOrder(cabeza);
         }
 
-        public List<T> PreOrder()
+        public List<Nodo<T>> PreOrder()
         {
-            throw new NotImplementedException();
+            return PreOrder(cabeza);
         }
 
         public int Height(Nodo<T> nodo)
         {
-            int height = 0; 
+          int height = 0;
+            
           if (nodo != null)
             {
                 int L = Height(nodo.Left);
@@ -259,6 +263,39 @@ namespace BinTree
         IEnumerator IEnumerable.GetEnumerator()
         {
             throw new NotImplementedException();
+        }
+
+        public List<Nodo<T>> PreOrder(Nodo<T> node)
+        {
+            if (node != null)
+            {
+                preOrden.Add(node);
+                PreOrder(node.Left);
+                PreOrder(node.Right);
+            }
+            return preOrden;
+        }
+
+        public List<Nodo<T>> InOrder(Nodo<T> node)
+        {
+            if (node != null)
+            {
+                InOrder(node.Left);
+                inOrden.Add(node);
+                InOrder(node.Right);
+            }
+            return inOrden;
+        }
+
+        public List<Nodo<T>> PostOrder(Nodo<T> node)
+        {
+            if (node != null)
+            {
+                PostOrder(node.Left);
+                PostOrder(node.Right);
+                postOrden.Add(node);
+            }
+            return postOrden;
         }
     }
 }

@@ -15,8 +15,11 @@ namespace BinTree
         bool Contains(T llave);
         T Obtain(T llave);
         Nodo<T> DegeneratedOrBalanced(Nodo<T> nodo);
-        List<T> PreOrder();
-        List<T> InOrder();
-        List<T> PostOrder();
+        List<Nodo<T>> PreOrder();
+        List<Nodo<T>> InOrder();
+        List<Nodo<T>> PostOrder();
+        List<Nodo<T>> PreOrder(Nodo<T> node);
+        List<Nodo<T>> InOrder(Nodo<T> node);
+        List<Nodo<T>> PostOrder(Nodo<T> node);
     }
 }
