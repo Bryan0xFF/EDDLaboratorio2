@@ -297,5 +297,21 @@ namespace BinTree
             }
             return postOrden;
         }
+
+        public bool Limpiar()
+        {
+            try
+            {
+                inOrden.Clear();
+                preOrden.Clear();
+                postOrden.Clear();
+                return true;
+            }
+            catch (Exception)
+            {
+
+                return false;
+            }
+        }
     }
 }
