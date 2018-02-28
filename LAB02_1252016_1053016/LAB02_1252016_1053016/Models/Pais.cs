@@ -12,7 +12,7 @@ namespace LAB02_1252016_1053016.Models
 
         public int CompareTo(Pais other)
         {
-            return this.CompareTo(other);
+            return this.Grupo.CompareTo(other.Grupo);
         }
     }
 }

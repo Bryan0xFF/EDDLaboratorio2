@@ -13,5 +13,10 @@ namespace BinTree
         public Nodo<T> Parent { get; set; }
         public T Value { get; set; }
 
+        public Nodo()
+        {            
+            Value = default(T);
+        }
+
     }
 }

@@ -12,8 +12,7 @@ namespace BinTree
         private Nodo<T> cabeza;
 
         public BinaryTree()
-        {
-            cabeza = default(Nodo<T>);
+        {            
             cabeza = new Nodo<T>();
         }
 
@@ -151,13 +150,13 @@ namespace BinTree
             Insert(value, cabeza);
         }
 
-        public void Insert(T value, Nodo<T> node)
+        public Nodo<T> Insert(T value, Nodo<T> node)
         {
             
             if (cabeza.Value == null)
             {
                 cabeza.Value = value;
-                return;
+                return cabeza;
             }
             else if (node == null)
             {
@@ -168,19 +167,22 @@ namespace BinTree
             {
                 if (node.Value.CompareTo(value) > 0)
                 {
+                   // node = new Nodo<T>();                   
+                    node.Left = Insert(value, node.Left);
                     node.Left.Parent = node;
-                    Insert(value, node.Left);
                 }
                 if (node.Value.CompareTo(value) < 0)
                 {
+                   // node = new Nodo<T>();                  
+                    node.Right = Insert(value, node.Right);
                     node.Right.Parent = node;
-                    Insert(value, node.Right);
                 }
                 else
                 {
                     throw new InvalidOperationException("Ya contiene una llave igual");
                 }
             }
+            return node;
         }
 
         public T Obtain(T llave)

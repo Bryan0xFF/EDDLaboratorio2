@@ -148,15 +148,16 @@ namespace LAB02_1252016_1053016.Controllers
                         {
                             string info = reader.ReadToEnd();
                             List<Pais> lista = JsonConvert.DeserializeObject<List<Pais>>(info);
-                            lista.ForEach(p =>
+
+                            for (int i = 0; i < lista.Count; i++)
                             {
                                 Pais newPais = new Pais()
                                 {
-                                    NombrePais = p.NombrePais,
-                                    Grupo = p.Grupo
+                                    NombrePais = lista.ElementAt(i).NombrePais,
+                                    Grupo = lista.ElementAt(i).Grupo
                                 };
-                                ABBPais.Insert(newPais); 
-                            }); 
+                                ABBPais.Insert(newPais);
+                            }                        
                         }
 
                         // no es ninguno de los 2 
