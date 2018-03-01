@@ -185,6 +185,8 @@
     <Content Include="Views\Paises\LecturaArchivo.cshtml" />
     <Content Include="Views\Paises\CargaManual.cshtml" />
     <Content Include="Views\Paises\CargaManualPais.cshtml" />
+    <Content Include="Views\Paises\EditarPais.cshtml" />
+    <Content Include="Views\Paises\TreeSuccess.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
