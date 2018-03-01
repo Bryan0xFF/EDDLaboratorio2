@@ -1,0 +1,17 @@
+﻿
+@{
+    ViewBag.Title = "CargaManualData";
+}
+
+<h2>CargaManual datos:</h2>
+<h3>Ingrese valor o cadena a ingresar al arbol</h3>
+
+@using (Html.BeginForm("CargaManualDatos", "Paises", FormMethod.Post))
+{
+    <p><h3>Ingrese valor o cadena</h3></p>
+
+    @Html.TextBox("Valor", null, new { @class = "form-control" })
+
+    <input type="submit" name="Submit" value="Submit" />
+}
+
