@@ -167,7 +167,8 @@ namespace LAB02_1252016_1053016.Controllers
                                 };
                                 ABBPais.Insert(newPais);                                
                             }
-                            BinTree.Nodo<Pais> nodoDesbalanceado = ABBPais.DegeneratedOrBalanced(ABBPais.cabeza); 
+                            BinTree.Nodo<Pais> nodoDesbalanceado = ABBPais.DegeneratedOrBalanced(ABBPais.cabeza);
+                         //   nodoDesbalanceado = ABBPais.Search(ABBPais.cabeza, ); 
                         }
 
                         // no es ninguno de los 2 
@@ -182,16 +183,58 @@ namespace LAB02_1252016_1053016.Controllers
             if (opciones[0] == true)
             {
                 ABBCadena = (BinaryTree<string>)Session["ABBCadena"];
-                return View("GenericSuccess");
+                return View();
             }
-            else
+            else if (opciones[1] == true)
             {
                 ABBint = (BinaryTree<int>)Session["ABBint"];
-                return View("NETSuccess");
+                return View();
             }
+            else if (opciones[2] == true)
+            {
+                ABBPais = (BinaryTree<Pais>)Session["ABBPais"];                
+                return View("TreeSuccess", ABBPais.InOrder(ABBPais.cabeza));
+            }
+            else
+                return View("Index"); 
+        }
+        
+        [HttpGet]
+        public ActionResult EditarPais()
+        {
+            return View("EditarPais");  
         }
 
-      
+        [HttpPost]
+        public ActionResult EditarPais(FormCollection form)
+        {
+          
 
+            if(opciones[0] == true) //cadenas
+            {
+
+            }
+            else if (opciones[1] == true) //ints
+            {
+
+            }
+            else if (opciones[2] == true) //pais
+            {
+                string nombre = form["nombre"];
+                string grupo = form["grupo"];
+                Nodo<Pais> nodo; 
+
+                Pais newPais = new Pais()
+                {
+                    NombrePais = nombre,
+                    Grupo = grupo
+                };
+                nodo = ABBPais.Search(ABBPais.cabeza, newPais); 
+              //  if ()
+
+            }
+
+            return View("TreeSuccess"); 
+        }
     }
 }

@@ -10,9 +10,9 @@ namespace BinTree
     public class BinaryTree<T> : ArbolBinario<T>,IEnumerable<T> where T : IComparable<T>
     {
         public Nodo<T> cabeza;
-        private static List<Nodo<T>> inOrden;
-        private static List<Nodo<T>> preOrden;
-        private static List<Nodo<T>> postOrden;
+        private static List<Nodo<T>> inOrden = new List<Nodo<T>>();
+        private static List<Nodo<T>> preOrden=  new List<Nodo<T>>();
+        private static List<Nodo<T>> postOrden = new List<Nodo<T>>();
 
         public BinaryTree()
         {            
@@ -313,5 +313,40 @@ namespace BinTree
                 return false;
             }
         }
+
+        public Nodo<T> Search(Nodo<T> nodo, T value)
+        {
+            if (nodo == null)
+                return null;
+            else if (nodo.Value.CompareTo(value) == 0)          
+               
+                return nodo;
+            
+            else if (nodo.Value.CompareTo(value) > 0)
+                Search(nodo.Left, value);
+            else if (nodo.Value.CompareTo(value) < 0)
+                Search(nodo.Right, value);
+            return nodo;
+        }
+
+
+        public bool SearchAndEdit(Nodo<T> nodo, T value)
+        {
+            if (nodo == null)
+                return false;
+            else if (nodo.Value.CompareTo(value) == 0)
+            {
+                nodo.Value = value;
+                return true; 
+            }               
+            else if (nodo.Value.CompareTo(value) > 0)
+                Search(nodo.Left, value);
+            else if (nodo.Value.CompareTo(value) < 0)
+                Search(nodo.Right, value);
+            return false;
+              
+        }
+
+      
     }
 }
