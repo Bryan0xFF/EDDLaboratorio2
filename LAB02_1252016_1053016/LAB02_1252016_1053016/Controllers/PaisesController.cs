@@ -146,7 +146,7 @@ namespace LAB02_1252016_1053016.Controllers
                         else if (opciones[1] == true) //Arbol de enteros
                         {
                             string info = reader.ReadToEnd();
-                            List<object> lista = JsonConvert.DeserializeObject<List<object>>(info);
+                            List<int> lista = JsonConvert.DeserializeObject<List<int>>(info);
                             for (int i = 0; i < lista.Count; i++)
                             {                              
                                 ABBint.Insert(Convert.ToInt32(lista.ElementAt(i)));
@@ -192,49 +192,14 @@ namespace LAB02_1252016_1053016.Controllers
             }
             else if (opciones[2] == true)
             {
-                ABBPais = (BinaryTree<Pais>)Session["ABBPais"];                
-                return View("TreeSuccess", ABBPais.InOrder(ABBPais.cabeza));
+                ABBPais = (BinaryTree<Pais>)Session["ABBPais"];
+                List<Nodo<Pais>> inOrder = ABBPais.InOrder(ABBPais.cabeza);
+                Session["ABBPais"] = ABBPais;
+                return View("TreeSuccess", inOrder);
             }
             else
                 return View("Index"); 
-        }
-        
-        [HttpGet]
-        public ActionResult EditarPais()
-        {
-            return View("EditarPais");  
-        }
-
-        [HttpPost]
-        public ActionResult EditarPais(FormCollection form)
-        {
-          
-
-            if(opciones[0] == true) //cadenas
-            {
-
-            }
-            else if (opciones[1] == true) //ints
-            {
-
-            }
-            else if (opciones[2] == true) //pais
-            {
-                string nombre = form["nombre"];
-                string grupo = form["grupo"];
-                Nodo<Pais> nodo; 
-
-                Pais newPais = new Pais()
-                {
-                    NombrePais = nombre,
-                    Grupo = grupo
-                };
-                nodo = ABBPais.Search(ABBPais.cabeza, newPais); 
-              //  if ()
-
-            }
-
-            return View("TreeSuccess"); 
-        }
+        }        
+      
     }
 }

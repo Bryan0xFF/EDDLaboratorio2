@@ -199,6 +199,13 @@ namespace BinTree
                 cabeza.Value = value;
                 return cabeza;
             }
+
+            if (cabeza.Value.CompareTo(default(T)) == 0)
+            {
+                cabeza.Value = value;
+                return cabeza;
+            }
+
             else if (node == null)
             {
                 node = new Nodo<T>();
@@ -327,26 +334,6 @@ namespace BinTree
             else if (nodo.Value.CompareTo(value) < 0)
                 Search(nodo.Right, value);
             return nodo;
-        }
-
-
-        public bool SearchAndEdit(Nodo<T> nodo, T value)
-        {
-            if (nodo == null)
-                return false;
-            else if (nodo.Value.CompareTo(value) == 0)
-            {
-                nodo.Value = value;
-                return true; 
-            }               
-            else if (nodo.Value.CompareTo(value) > 0)
-                Search(nodo.Left, value);
-            else if (nodo.Value.CompareTo(value) < 0)
-                Search(nodo.Right, value);
-            return false;
-              
-        }
-
-      
+        }      
     }
 }
