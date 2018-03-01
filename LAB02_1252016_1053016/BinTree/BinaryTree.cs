@@ -218,12 +218,14 @@ namespace BinTree
                    // node = new Nodo<T>();                   
                     node.Left = Insert(value, node.Left);
                     node.Left.Parent = node;
+                    return node;
                 }
                 if (node.Value.CompareTo(value) < 0)
                 {
                    // node = new Nodo<T>();                  
                     node.Right = Insert(value, node.Right);
                     node.Right.Parent = node;
+                    return node;
                 }
                 else
                 {
