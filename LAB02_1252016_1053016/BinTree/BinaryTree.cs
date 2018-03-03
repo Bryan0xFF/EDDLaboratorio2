@@ -200,7 +200,7 @@ namespace BinTree
                 return cabeza;
             }
 
-            if (cabeza.Value.CompareTo(default(T)) == 0)
+            if (cabeza.Value.CompareTo(value) == 0)
             {
                 cabeza.Value = value;
                 return cabeza;
@@ -327,8 +327,7 @@ namespace BinTree
         {
             if (nodo == null)
                 return null;
-            else if (nodo.Value.CompareTo(value) == 0)          
-               
+            else if (nodo.Value.CompareTo(value) == 0)        
                 return nodo;
             
             else if (nodo.Value.CompareTo(value) > 0)

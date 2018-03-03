@@ -136,7 +136,7 @@ namespace LAB02_1252016_1053016.Controllers
                         if (opciones[0] == true) // arbol de cadenas
                         {
                            string info =  reader.ReadToEnd();    
-                           List<object> lista = JsonConvert.DeserializeObject<List<object>>(info);
+                           List<string> lista = JsonConvert.DeserializeObject<List<string>>(info);
                             for (int i = 0; i < lista.Count; i++)
                             {
                                 ABBCadena.Insert(lista.ElementAt(i).ToString());
@@ -167,8 +167,7 @@ namespace LAB02_1252016_1053016.Controllers
                                 };
                                 ABBPais.Insert(newPais);                                
                             }
-                            BinTree.Nodo<Pais> nodoDesbalanceado = ABBPais.DegeneratedOrBalanced(ABBPais.cabeza);
-                         //   nodoDesbalanceado = ABBPais.Search(ABBPais.cabeza, ); 
+                            BinTree.Nodo<Pais> nodoDesbalanceado = ABBPais.DegeneratedOrBalanced(ABBPais.cabeza);                       
                         }
 
                         // no es ninguno de los 2 
@@ -183,12 +182,16 @@ namespace LAB02_1252016_1053016.Controllers
             if (opciones[0] == true)
             {
                 ABBCadena = (BinaryTree<string>)Session["ABBCadena"];
-                return View();
+                List<Nodo<string>> inOrder = ABBCadena.InOrder(ABBCadena.cabeza);
+                Session["ABBPais"] = ABBPais;
+                return View("StringSuccess", inOrder);               
             }
             else if (opciones[1] == true)
             {
                 ABBint = (BinaryTree<int>)Session["ABBint"];
-                return View();
+                List<Nodo<int>> inOrder = ABBint.InOrder(ABBint.cabeza);
+                Session["ABBPais"] = ABBPais;
+                return View("IntSuccess", inOrder);
             }
             else if (opciones[2] == true)
             {
@@ -200,6 +203,7 @@ namespace LAB02_1252016_1053016.Controllers
             else
                 return View("Index"); 
         }        
-      
+
+
     }
 }

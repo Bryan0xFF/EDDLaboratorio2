@@ -186,6 +186,9 @@
     <Content Include="Views\Paises\CargaManual.cshtml" />
     <Content Include="Views\Paises\CargaManualPais.cshtml" />
     <Content Include="Views\Paises\TreeSuccess.cshtml" />
+    <Content Include="Views\Paises\StringSuccess.cshtml" />
+    <Content Include="Views\Paises\IntSuccess.cshtml" />
+    <Content Include="Views\Paises\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
