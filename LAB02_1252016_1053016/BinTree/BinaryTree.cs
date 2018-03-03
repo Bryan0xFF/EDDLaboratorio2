@@ -10,9 +10,9 @@ namespace BinTree
     public class BinaryTree<T> : ArbolBinario<T>,IEnumerable<T> where T : IComparable<T>
     {
         public Nodo<T> cabeza;
-        private static List<Nodo<T>> inOrden = new List<Nodo<T>>();
-        private static List<Nodo<T>> preOrden=  new List<Nodo<T>>();
-        private static List<Nodo<T>> postOrden = new List<Nodo<T>>();
+        private List<Nodo<T>> inOrden = new List<Nodo<T>>();
+        private List<Nodo<T>> preOrden=  new List<Nodo<T>>();
+        private List<Nodo<T>> postOrden = new List<Nodo<T>>();
 
         public BinaryTree()
         {            
@@ -276,6 +276,8 @@ namespace BinTree
 
         public List<Nodo<T>> PreOrder(Nodo<T> node)
         {
+    
+
             if (node != null)
             {
                 preOrden.Add(node);
@@ -287,6 +289,8 @@ namespace BinTree
 
         public List<Nodo<T>> InOrder(Nodo<T> node)
         {
+            
+
             if (node != null)
             {
                 InOrder(node.Left);
@@ -298,6 +302,8 @@ namespace BinTree
 
         public List<Nodo<T>> PostOrder(Nodo<T> node)
         {
+            
+
             if (node != null)
             {
                 PostOrder(node.Left);

@@ -15,7 +15,7 @@
     {
         <tr>
             <td>@Model.ElementAt(i).Value </td>
-            <td>@Html.ActionLink("Delete", "Delete", new { position = Model.ElementAt(i) })</td>
+            <td>@Html.ActionLink("Delete", "Delete","Paises", new { id = i }, null)</td>
         </tr>
     }
 </table>

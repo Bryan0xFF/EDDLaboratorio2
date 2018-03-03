@@ -88,6 +88,47 @@ namespace LAB02_1252016_1053016.Controllers
             return View();
         }
 
+        public ActionResult Delete(int id)
+        {
+            opciones = (bool[])Session["Opcion"];
+
+            if (opciones[0] == true)
+            {
+                ABBCadena = (BinaryTree<string>)Session["ABBCadena"];
+                ABBCadena.Limpiar();
+                List<Nodo<string>> tempList = ABBCadena.InOrder();
+                ABBCadena.Delete(tempList.ElementAt(id).Value);
+                Session["ABBCadena"] = ABBCadena;
+                ABBCadena.Limpiar();
+                tempList = ABBCadena.InOrder();
+                return View("StringSuccess", tempList);
+            }
+            if (opciones[1] == true)
+            {
+                ABBint = (BinaryTree<int>)Session["ABBInt"];
+                ABBint.Limpiar();
+                List<Nodo<int>> tempList = ABBint.InOrder();
+                ABBint.Delete(tempList.ElementAt(id).Value);
+                ABBint.Limpiar();
+                tempList = ABBint.InOrder();
+                Session["ABBInt"] = ABBint;
+                return View("IntSuccess", tempList);
+            }
+            if (opciones[2] == true)
+            {
+                ABBPais = (BinaryTree<Pais>)Session["ABBPais"];
+                ABBPais.Limpiar();
+                List<Nodo<Pais>> tempList = ABBPais.InOrder();
+                ABBPais.Delete(tempList.ElementAt(id).Value);
+                Session["ABBPais"] = ABBPais;
+                ABBPais.Limpiar();
+                tempList = ABBPais.InOrder();
+                return View("TreeSuccess");
+            }
+
+            return View();
+        }
+
         [HttpGet]
         public ActionResult LecturaArchivo()
         {
