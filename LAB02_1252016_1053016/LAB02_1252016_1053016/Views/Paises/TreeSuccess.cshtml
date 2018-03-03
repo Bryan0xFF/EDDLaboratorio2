@@ -17,7 +17,7 @@
         <tr>
             <td>@Model.ElementAt(i).Value.NombrePais </td>
             <td>@Model.ElementAt(i).Value.Grupo </td>
-            <td>@Html.ActionLink("Delete", "EditarPais", new { position = Model.ElementAt(i) })</td>
+            <td>@Html.ActionLink("Delete", "Delete", "Paises", new { id = i }, null)</td>
         </tr>
     }
 </table>

@@ -98,9 +98,9 @@ namespace LAB02_1252016_1053016.Controllers
                 ABBCadena.Limpiar();
                 List<Nodo<string>> tempList = ABBCadena.InOrder();
                 ABBCadena.Delete(tempList.ElementAt(id).Value);
-                Session["ABBCadena"] = ABBCadena;
-                ABBCadena.Limpiar();
+                ABBCadena.Limpiar();                
                 tempList = ABBCadena.InOrder();
+                Session["ABBCadena"] = ABBCadena;               
                 return View("StringSuccess", tempList);
             }
             if (opciones[1] == true)
@@ -123,7 +123,7 @@ namespace LAB02_1252016_1053016.Controllers
                 Session["ABBPais"] = ABBPais;
                 ABBPais.Limpiar();
                 tempList = ABBPais.InOrder();
-                return View("TreeSuccess");
+                return View("TreeSuccess",tempList);
             }
 
             return View();
