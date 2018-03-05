@@ -80,6 +80,11 @@ namespace BinTree
                 throw new NullReferenceException();
             }
 
+            if (cabeza.Value.CompareTo(value) == 0 && cabeza.Left == null && cabeza.Right == null)
+            {
+                cabeza = null;
+            }
+
             else if (value.CompareTo(node.Value) == -1)
             {
                 Delete(value, node.Left);
@@ -109,6 +114,7 @@ namespace BinTree
                         if (node.Parent == null)
                         {
                             cabeza = node.Right;
+                            cabeza.Parent = null;
                         }
                         else
                         {
@@ -134,6 +140,7 @@ namespace BinTree
                         if (node.Parent == null)
                         {
                             cabeza = node.Left;
+                            cabeza.Parent = null;
                         }
                         else
                         {
